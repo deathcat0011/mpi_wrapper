@@ -390,7 +390,9 @@ namespace mpi
       }
 
       int count() const {return m_count;}
-      MPI_Datatype type() {return m_type;}
+      MPI_Datatype type() const {return m_type;}
+      void free() const {         MPI_Type_free(&m_type);
+}
 
       operator MPI_Datatype() const {return m_type;}
    };
