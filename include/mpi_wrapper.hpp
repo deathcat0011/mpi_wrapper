@@ -419,7 +419,7 @@ namespace mpi
       int rank() { return m_rank; }
 
       template<typename T>
-      void send(const Datatype<T>& dtype, const T& buffer, int to, int tag = 0) const
+      void send(const T& buffer, const Datatype<T>& dtype, int to, int tag = 0) const
       {
          auto count = Size<T>::size(buffer);
          int err =  MPI_Send( ConstData<T>::data(buffer), 1, (MPI_Datatype) dtype, to, tag, m_communicator);
